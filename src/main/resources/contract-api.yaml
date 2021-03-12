@@ -1,0 +1,48 @@
+#Versão da Open Api
+openapi: "3.0.0"
+
+# informações da API
+info:
+  version: 0.0.1
+  title: Biblioteca (Modelo de estudo inédito)
+  description: Ninguém nunca implementou o modelo de uma Biblioteca em Java (pff!!!)
+
+tags:
+  - name: "Biblioteca"
+
+# endpoints aqui!
+paths:
+
+  /biblioteca/livros:
+    get:
+      summary: Esse é o resumo!
+      # Aqui nós ligamos o endpoint as tags!
+      tags:
+        - "Biblioteca"
+      description: Essa é uma descrição
+      operationId: getTodosOsLivrosBiblioteca
+      responses:
+        "200":
+          description: Isso significa que está tudo funcionando
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Livro'
+
+  # abaixo os modelos de dado
+components:
+
+  schemas:
+
+    Livro:
+      description: Esse é o modelo de dados de um livro
+      type: object
+      properties:
+        nome:
+          description: Nome do Livro
+          type: string
+        author:
+          description: Nome do Autor
+          type: string
